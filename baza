@@ -1,0 +1,12 @@
+﻿Drop table wikireference;
+
+CREATE TABLE `wikireference` (
+  `page_id` int(11) NOT NULL,
+  `id` int(12) NOT NULL AUTO_INCREMENT,
+  `reference_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `rid_idx` (`reference_id`),
+  KEY `pid` (`page_id`),
+  CONSTRAINT `pid` FOREIGN KEY (`page_id`) REFERENCES `wikipage` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `rid` FOREIGN KEY (`reference_id`) REFERENCES `wikipage` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
